@@ -1,0 +1,47 @@
+tr{
+    font-size: xx-large;
+    color: darkgreen;
+
+}
+.tablo{
+    border: 4px solid brown;
+    border-radius: 10px;
+    background-color: brown;
+}
+.baslik{
+    
+    color: wheat;
+    text-align: center;
+
+}
+body {
+    background-color: brown;
+    text-align: center;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 5px;
+    width: center; 
+    margin: 0;
+}
+
+.cerceve2{
+    border: 5px double brown;
+    background-color: brown;
+    border-radius: 10px ;
+    text-align: center;
+
+}
+.cerceve{
+    border: 10px double brown;
+    background-color: wheat;
+
+}
+.hane{
+    border: 2px solid brown;
+    border-radius: 10px;
+    background-color: wheat;
+    padding: 5px 20px;
+}
