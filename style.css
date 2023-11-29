@@ -1,42 +1,35 @@
-div#baslik{
-    border: 5px double black;
-    color: rgb(41, 4, 4);
-    background-color:bisque;
-    margin: auto;
-    width: 110px;
-    height: 38px;
+tr{
+    font-size: xx-large;
+
+}
+.tablo{
+    border: 4px solid brown;
+}
+.baslik{
+    border: 6px double brown;
     text-align: center;
-  }
-  div#cevrekutu {
-    width: 480px;
-    height: 480px;
-    border: 5px double rgb(120, 235, 120);
-    background-color:bisque;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-  div.kutu {
-    width: 155px;
-    height: 155px;
-    background-color: bisque;
-    color: rgb(72, 13, 13);
-    border: 2px solid black;
+
+}
+.tablo{
+
+}
+.uceuclukkare{
+
+}
+.bireuclukkare{
+    
+
+}
+.cerceve2{
+    border: 2px solid brown;
     text-align: center;
-    line-height: 200px;
-    margin: 0.5px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-  div.hane{
-    width: 50px;
-    height: 50px;
-    background-color:bisque;
-    color: rgb(72, 13, 13);
-    border: 1px solid black;
-    text-align: center;
-    line-height: 45px;
-    margin: 0px;
-  }
+}
+.cerceve{
+    border: 10px double brown;
+    background-color: beige;
+
+}
+.hane{
+    border: 2px solid brown;
+    background-color: wheat;
+}
