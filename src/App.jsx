@@ -1,81 +1,38 @@
+// App.js
 
-import React, { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { AuthProvider } from './Auth';
+import Navbar from './components/Navbar';
+import Home from './pages/Home.js';
+import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
+import CategoryDetail from './pages/CategoryDetail';
+import Favorites from './pages/Favorites';
+import Cart from './pages/Cart';
+import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
-  const [tasks, setTasks] = useState([]);
-  const [task, setTask] = useState('');
-
-  useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    setTasks(storedTasks);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
-
-  const addTask = () => {
-    if (task.trim() === '') return;
-
-    const newTask = {
-      id: uuidv4(),
-      text: task,
-    };
-
-    setTasks([...tasks, newTask]);
-    setTask('');
-  };
-
-  const deleteTask = (taskId) => {
-    const updatedTasks = tasks.filter((t) => t.id !== taskId);
-    setTasks(updatedTasks);
-  };
-
-  const editTask = (taskId, newText) => {
-    const updatedTasks = tasks.map((t) =>
-      t.id === taskId ? { ...t, text: newText } : t
-    );
-    setTasks(updatedTasks);
-  };
-
   return (
-    <div className="app">
-      <h1>To-Do Uygulaması</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          addTask();
-        }}
-      >
-        <input
-          type="text"
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
-          placeholder="Yeni görev ekle"
-        />
-        <button type="submit">Ekle</button>
-      </form>
-      <ul>
-        {tasks.map((t) => (
-          <li key={t.id}>
-            {t.text}
-            <button onClick={() => deleteTask(t.id)}>Sil</button>
-            <button
-              onClick={() => {
-                const newText = prompt('Yeni görevi giriniz:', t.text);
-                if (newText !== null) {
-                  editTask(t.id, newText);
-                }
-              }}
-            >
-              Düzenle
-            </button>
+    <AuthProvider>
+      <Router>
+        <div>
+          <Navbar />
+
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/products" exact component={Products} />
+            <Route path="/products/:id" component={ProductDetail} />
+            <Route path="/categories/:id" component={CategoryDetail} />
             
-          </li>
-        ))}
-      </ul>
-    </div>
+            {/* PrivateRoute kullanarak favori sayfasını koruma */}
+            <PrivateRoute path="/favorites" component={Favorites} />
+
+            <Route path="/cart" component={Cart} />
+          </Switch>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 };
 
